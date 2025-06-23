@@ -1,0 +1,117 @@
+/* Custom CSS Variables for a Subtle Modern Palette */
+:root {
+    --primary-color: #3B82F6; /* Blue 500/600 - professional and subtle */
+    --primary-dark: #2563EB; /* Blue 700 - slightly darker for hover */
+    --text-heading: #1F2937; /* Dark Gray 900 */
+    --text-body: #4B5563;    /* Gray 600 */
+    --bg-light: #F9FAFB;      /* Gray 50 - very light off-white for backgrounds */
+    --bg-white: #FFFFFF;      /* Pure white for cards */
+    --card-shadow-light: rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: rgba(0, 0, 0, 0.15);
+    --button-shadow: rgba(59, 130, 246, 0.25); /* Shadow matching primary color */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-body);
+    background-color: var(--bg-light); /* Overall light background */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll due to AOS animations */
+}
+
+/* Smooth scrolling for navigation links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Adjust scroll position for fixed header */
+/* This ensures that when you click a nav link, the section content isn't hidden behind the fixed header. */
+section[id] {
+    scroll-margin-top: 5rem; /* Adjusted to 5rem (80px) which should match header height */
+}
+
+
+/* Custom focus styles for accessibility */
+input:focus, textarea:focus, button:focus, a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-color: var(--primary-color);
+}
+
+/* Modern Card Styling */
+.modern-card {
+    border-radius: 12px; /* More rounded corners */
+    background-color: var(--bg-white); /* White card background on light theme */
+    box-shadow: 0 6px 20px var(--card-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.modern-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 28px var(--card-shadow-hover);
+}
+
+/* Primary Button Styling (for major CTAs like "Send Message") */
+.btn-primary {
+    box-shadow: 0 5px 15px var(--button-shadow);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 9999px;
+    padding: 14px 32px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white; /* White text for visibility */
+}
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--button-shadow);
+}
+
+/* Secondary Button Styling (for "View My Work", "Get in Touch", "View Project") */
+.btn-secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color); /* Primary color text for secondary button */
+    border-radius: 9999px;
+    padding: 14px 32px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-white); /* White text on hover */
+    transform: translateY(-3px);
+}
+
+/* Nav link hover effects */
+.nav-links a {
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    color: var(--text-body); /* Default nav link color */
+}
+.nav-links a:hover {
+    color: var(--primary-color); /* Primary color on hover */
+    transform: translateY(-2px);
+}
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+    transform: translateX(-50%);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Project Card image specific hover */
+.project-card-image {
+    transition: transform 0.4s ease-out;
+}
+.project-card:hover .project-card-image {
+    transform: scale(1.05);
+}
